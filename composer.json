@@ -1,0 +1,9 @@
+{
+    "name": "root/blog_php",
+    "autoload": {
+        "psr-4": {
+            "App\\": "src"
+        }
+    },
+    "require": {}
+}
