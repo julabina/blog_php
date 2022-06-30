@@ -3,8 +3,8 @@
 <?php ob_start(); ?>
 <main class="blogPosts">
 
-    <h1>Mon blog</h1>
-
+<a href="/blog_php"><h1>Mon blog</h1></a>
+    
     <?php foreach($posts as $post): ?>
         <article class="blogPosts__post">
             <!-- htmlspecialchars = Convertit les caractères spéciaux en entités HTML -->
