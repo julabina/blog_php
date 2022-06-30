@@ -8,6 +8,9 @@ use App\Models\CommentModel;
 
 class PostController {
 
+    /**
+     * Display all post
+     */
     public function list() {
 
         $postModel = new PostModel();
@@ -18,6 +21,11 @@ class PostController {
 
     }
 
+    /**
+     * Display one post
+     * 
+     * @param string $id
+     */
     public function show($id) {
 
         $postModel = new PostModel();

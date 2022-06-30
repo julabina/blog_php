@@ -16,6 +16,13 @@ class CommentModel {
 
     public DatabaseConnection $connection;
 
+    /**
+     * get all comments for one post
+     * 
+     * @param $postId
+     * 
+     * @return array
+     */
     public function getComments($postId): array {
 
         $statement = $this->connection->getConnection()->query(

@@ -17,6 +17,11 @@ class PostModel {
 
     public DatabaseConnection $connection;
     
+    /**
+     * get all posts
+     * 
+     * @return array
+     */
     public function getPosts(): array {
         
         $statement = $this->connection->getConnection()->query(
@@ -41,6 +46,13 @@ class PostModel {
 
     }
 
+    /**
+     * get one post
+     * 
+     * @param string $postId
+     * 
+     * @return Post()
+     */
     public function getOnePost($postId): Post {
 
         $statement = $this->connection->getConnection()->query(
