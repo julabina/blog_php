@@ -32,6 +32,7 @@ class Route {
         
         $this->params[$param] = str_replace('(', '(?:', $regex);
         return $this;
+        
     }
     
     /**

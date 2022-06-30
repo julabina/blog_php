@@ -8,6 +8,16 @@ use App\Models\CommentModel;
 
 class PostController {
 
+    public function list() {
+
+        $postModel = new PostModel();
+        $postModel->connection = new DatabaseConnection();
+        $posts = $postModel->getPosts();
+
+        require('templates/posts.php');
+
+    }
+
     public function show($id) {
 
         $postModel = new PostModel();
@@ -19,13 +29,7 @@ class PostController {
         $post = $postModel->getOnePost($id);
         $comments = $commentModel->getComments($id);
 
-        echo "<pre>";
-        print_r($post);
-        echo "</pre>";
-        
-        echo "<pre>";
-        print_r($comments);
-        echo "</pre>";
+        require('templates/post.php');
 
     }
     
