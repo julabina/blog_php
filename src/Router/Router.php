@@ -2,6 +2,8 @@
 
 namespace App\Router;
 
+use App\Controllers\PostController;
+
 /**
  * Router
  * 

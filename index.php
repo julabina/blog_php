@@ -5,9 +5,8 @@ require 'vendor/autoload.php';
 $router = new App\Router\Router($_GET['url']);
 
 $router->get('/', function(){ echo 'Homepage'; });
-$router->get('/articles', 'Post#show');
-$router->get('/articles/:id', 'Post#showOne');
-
+$router->get('/articles', 'Posts#show');
+$router->get('/articles/:id', 'Post#show');
 
 /* $router->get('/', function(){ echo "homepage"; });
 $router->get('/post', function(){ echo 'Tous les articles'; });
