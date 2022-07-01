@@ -12,27 +12,37 @@
     <h2><?= htmlspecialchars($post->chapo); ?></h2>
     
     <p><?= htmlspecialchars($post->content); ?></p>
+
     <form class="blogPost__form" action="" method="post">
         <div class="blogPost__form__name">
             <div class="blogPost__form__name__lastname">
                 <label for="">Nom</label>
-                <input type="text" id="">
+                <input type="text" id="" name="lastname">
             </div>
             <div class="blogPost__form__name__firstname">
                 <label for="">Prenom</label>
-                <input type="text" id="">
+                <input type="text" id="" name="firstname">
             </div>
         </div>
         <div class="blogPost__form__mail">
             <label for="">Adresse email</label>
-            <input type="email" id="">
+            <input type="email" id="" name="email">
         </div>
         <div class="blogPost__form__message">
             <label for="">Votre commentaire</label>
-            <textarea id="" cols="30" rows="10"></textarea>
+            <textarea id="" name="content" cols="30" rows="10"></textarea>
         </div>
         <button type="submit">Envoyer</button>
     </form>
+
+    <?php foreach($comments as $comment): ?>
+        <div>
+            <p><?= htmlspecialchars($comment->content); ?></p>
+            <p>le <?= htmlspecialchars($comment->update_date); ?></p>
+            <p>Par <?= htmlspecialchars($comment->author); ?></p>
+        </div>
+
+    <?php endforeach; ?>
     
 </main>
 <footer>

@@ -17,7 +17,7 @@
     <form action="/blog_php/adminlog" method="post">
         <div>
             <label for="logEmail"></label>
-            <input type="text" name="email" id="logEmail">
+            <input type="email" name="email" id="logEmail">
         </div>
         <div>
             <label for="logPassword"></label>

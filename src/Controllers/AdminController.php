@@ -124,11 +124,12 @@ class AdminController {
         $title = $_POST['title'];
         $content = $_POST['content'];
         $chapo = $_POST['chapo'];
+        $author = $_POST['author'];
 
         $postModel = new PostModel();
         $postModel->connection = new DatabaseConnection();
 
-        $success = $postModel->putPost($title, $chapo, $content, $id);
+        $success = $postModel->putPost($title, $chapo, $content, $author, $id);
 
         if($success) {
             header('Location: /blog_php/adminPanel/showarticles');

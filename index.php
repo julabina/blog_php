@@ -7,7 +7,7 @@ $router = new App\Router\Router($_GET['url']);
 $router->get('/', function(){ require('templates/home.php'); });
 $router->get('/articles', 'Post#list');
 $router->get('/articles/:id', 'Post#show');
-$router->get('/adminlog', function(){ require('templates/log.php'); });
+$router->get('/adminlog', function(){ require('templates/adminLog.php'); });
 $router->post('/adminlog', 'Admin#log');
 $router->get('/adminPanel', function(){ require('templates/admin.php'); });
 $router->post('/adminlogout', 'Admin#logout');

@@ -110,13 +110,13 @@ class PostModel {
      * 
      * @return boolean
      */
-    public function putPost(string $title, string $chapo, string $content, $id): bool {
+    public function putPost(string $title, string $chapo, string $content, string $author, $id): bool {
 
         $statement = $this->connection->getConnection()->prepare(
-            "UPDATE posts SET title = ?, chapo = ?, content = ?, update_date = NOW() WHERE id = ?"
+            "UPDATE posts SET title = ?, chapo = ?, content = ?, author = ?, update_date = NOW() WHERE id = ?"
         );
 
-        $affectedLine = $statement->execute([$title, $chapo, $content, $id]);
+        $affectedLine = $statement->execute([$title, $chapo, $content, $author, $id]);
 
         return ($affectedLine > 0);
     }

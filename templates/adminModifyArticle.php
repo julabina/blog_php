@@ -24,6 +24,10 @@
     </div>
     <div class="">
         <label for=""></label>
+        <input type="text" value="<?= htmlspecialchars($post->author); ?>" name="author" id="">
+    </div>
+    <div class="">
+        <label for=""></label>
         <textarea name="content" id=""><?= htmlspecialchars($post->content); ?></textarea>
     </div>
     <button type='submit'>Modifier</button>
