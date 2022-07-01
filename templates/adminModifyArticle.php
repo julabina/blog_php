@@ -10,20 +10,21 @@
 
 <?php ob_start(); ?>
 
+<a href="/blog_php/adminPanel/showarticles">Retour</a>
 <h1>Modifier un commentaire</h1>
 
-<form action="" method="post">
+<form action="/blog_php/adminPanel/modify/<?= urlencode($post->id); ?>" method="post">
     <div class="">
         <label for=""></label>
-        <input type="text" value="<?= htmlspecialchars($post->title); ?>" name="" id="">
+        <input type="text" value="<?= htmlspecialchars($post->title); ?>" name="title" id="">
     </div>
     <div class="">
         <label for=""></label>
-        <input type="text" value="<?= htmlspecialchars($post->chapo); ?>" name="" id="">
+        <input type="text" value="<?= htmlspecialchars($post->chapo); ?>" name="chapo" id="">
     </div>
     <div class="">
         <label for=""></label>
-        <textarea name="" id=""><?= htmlspecialchars($post->content); ?></textarea>
+        <textarea name="content" id=""><?= htmlspecialchars($post->content); ?></textarea>
     </div>
     <button type='submit'>Modifier</button>
 </form>

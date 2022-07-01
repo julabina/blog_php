@@ -6,6 +6,8 @@
 
 <main>
     <h1>Mon blog</h1>
+
+    <a href="/blog_php/articles">articles</a>
 </main>
 <footer>
     <?php if((isset($_SESSION['auth']) && $_SESSION['auth'] === 'true') && (isset($_SESSION['name']) && $_SESSION['name'] === 'admin') && (isset($_SESSION['userType']) && $_SESSION['userType'] === 'admin')): ?>

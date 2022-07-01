@@ -10,14 +10,16 @@
 
 <?php ob_start(); ?>
 
+<a href="/blog_php/adminPanel">Retour</a>
 <h1>Liste des articles</h1>
 
 <?php foreach($posts as $post): ?>
     <div class="">
         <h2><?= htmlspecialchars($post->title); ?></h2>
         <p><?= htmlspecialchars($post->chapo) ?></p>
+        <p>Derniere mise a jour le <?= htmlspecialchars($post->update_date) ?></p>
         <div class="">
-            <form action="/blog_php/adminPanel/modify/<?= urlencode($post->id); ?>" method="post">
+            <form action="/blog_php/adminPanel/modify/<?= urlencode($post->id); ?>" method="get">
                 <button type="submit">Modifier</button>
             </form>
             <form action="/blog_php/adminPanel/delete" method="post">

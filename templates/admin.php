@@ -13,6 +13,7 @@
 <main>
 
     <h1>ADMIN PANEL</h1>
+    <a href="/blog_php/">Retour</a>
     <form action="/blog_php/adminlogout" method="post">
         <button type="submit">Se deconnecter</button>
     </form>

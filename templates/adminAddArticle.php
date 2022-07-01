@@ -10,6 +10,7 @@
 
 <?php ob_start(); ?>
 
+<a href="/blog_php/adminPanel">Retour</a>
 <h1>Ajouter un commentaire</h1>
 
 <form action="/blog_php/adminPanel/addarticle" method="post">

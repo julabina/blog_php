@@ -89,5 +89,16 @@ class PostModel {
         return ($affectedLine > 0);
 
     }
+
+    public function putPost($title, $chapo, $content, $id) {
+
+        $statement = $this->connection->getConnection()->prepare(
+            "UPDATE posts SET title = ?, chapo = ?, content = ?, update_date = NOW() WHERE id = ?"
+        );
+
+        $affectedLine = $statement->execute([$title, $chapo, $content, $id]);
+
+        return ($affectedLine > 0);
+    }
     
 }

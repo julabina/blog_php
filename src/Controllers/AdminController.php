@@ -96,6 +96,25 @@ class AdminController {
             echo "pas ok";
         }
     }
+
+    public function modify($id) {
+
+        $title = $_POST['title'];
+        $content = $_POST['content'];
+        $chapo = $_POST['chapo'];
+
+        $postModel = new PostModel();
+        $postModel->connection = new DatabaseConnection();
+
+        $success = $postModel->putPost($title, $chapo, $content, $id);
+
+        if($success) {
+            header('Location: /blog_php/adminPanel/showarticles');
+        } else {
+            echo "pas ok";
+        }
+
+    } 
     
     public function delete() {
 
