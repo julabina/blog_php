@@ -1,12 +1,23 @@
 <?php $title = "Mon blog - log"; ?>
 
+<?php session_start(); ?>
+
 <?php ob_start(); ?>
 
 <main>
+
+<?php if((isset($_SESSION['auth']) && $_SESSION['auth'] === 'true') && (isset($_SESSION['name']) && $_SESSION['name'] === 'admin') && (isset($_SESSION['userType']) && $_SESSION['userType'] === 'admin')): ?>
+
+    <form action="/blog_php/adminlogout" method="post">
+        <button type="submit">Se deconnecter</button>
+    </form>
+
+<?php else: ?>   
+
     <form action="/blog_php/adminlog" method="post">
         <div>
-            <label for="logName"></label>
-            <input type="text" name="name" id="logName">
+            <label for="logEmail"></label>
+            <input type="text" name="email" id="logEmail">
         </div>
         <div>
             <label for="logPassword"></label>
@@ -14,6 +25,9 @@
         </div>
         <button type="submit">Se connecter</button>
     </form>
+    
+    <?php endif; ?>
+
 </main>
 
 <?php $content = ob_get_clean(); ?>

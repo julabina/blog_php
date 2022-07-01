@@ -9,6 +9,8 @@ $router->get('/articles', 'Post#list');
 $router->get('/articles/:id', 'Post#show');
 $router->get('/adminlog', function(){ require('templates/log.php'); });
 $router->post('/adminlog', 'Admin#log');
+$router->get('/adminPanel', function(){ require('templates/admin.php'); });
+$router->post('/adminlogout', 'Admin#logout');
 
 /* $router->get('/', function(){ echo "homepage"; });
 $router->get('/post', function(){ echo 'Tous les articles'; });
