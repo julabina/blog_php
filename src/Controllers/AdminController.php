@@ -9,6 +9,9 @@ use App\Models\CommentModel;
 
 class AdminController {
 
+    /**
+     * admin loggin
+     */
     public function log() {   
 
         if((isset($_POST['email']) && $_POST['email'] !== "" && filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) && (isset($_POST['password']) && $_POST['password'] !== "") && preg_match('/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/', $_POST['password'])) {
@@ -40,6 +43,9 @@ class AdminController {
         
     }
     
+    /**
+     * admin logout
+     */
     public function logout() {
 
         session_start();
@@ -52,6 +58,9 @@ class AdminController {
 
     }
 
+    /**
+     * get posts list for admin panel
+     */
     public function list() {
 
         $postModel = new PostModel();
@@ -63,6 +72,11 @@ class AdminController {
 
     }
 
+    /**
+     * get one post for admin panel
+     * 
+     * @param string $id
+     */
     public function show($id) {
         
         $postModel = new PostModel();
@@ -78,6 +92,9 @@ class AdminController {
 
     }
 
+    /**
+     * create new post
+     */
     public function create() {
 
         $title = $_POST['title'];
@@ -97,6 +114,11 @@ class AdminController {
         }
     }
 
+    /**
+     * modify one post
+     * 
+     * @param $id
+     */
     public function modify($id) {
 
         $title = $_POST['title'];
@@ -116,8 +138,13 @@ class AdminController {
 
     } 
     
-    public function delete() {
-
+    /**
+     * delete one post
+     * 
+     * @param $id
+     */
+    public function delete($id) {
+        echo "article $id delete et ses commentaires"; 
     }
 
 }

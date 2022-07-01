@@ -1,5 +1,7 @@
 <?php $title = "Mon blog - " . htmlspecialchars($post->title); ?>
 
+<?php session_start(); ?>
+
 <? ob_start(); ?>
 <main class="blogPost">
     <a href="/blog_php"><h1>Mon blog</h1></a>

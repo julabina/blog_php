@@ -22,7 +22,7 @@
             <form action="/blog_php/adminPanel/modify/<?= urlencode($post->id); ?>" method="get">
                 <button type="submit">Modifier</button>
             </form>
-            <form action="/blog_php/adminPanel/delete" method="post">
+            <form action="/blog_php/adminPanel/delete/<?= urlencode($post->id); ?>" method="post">
                 <button type="submit">Supprimer</button>
             </form>
         </div>

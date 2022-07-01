@@ -1,5 +1,7 @@
 <?php $title = "Mon blog - tous les articles"; ?>
 
+<?php session_start(); ?>
+
 <?php ob_start(); ?>
 <main class="blogPosts">
 
@@ -14,8 +16,7 @@
             <a href="/blog_php/articles/<?= urlencode($post->id) ?>">Lire l'article</a>
         </article> 
     <?php endforeach; ?>
-        
-        
+             
 </main>
 <footer>
     <?php if((isset($_SESSION['auth']) && $_SESSION['auth'] === 'true') && (isset($_SESSION['name']) && $_SESSION['name'] === 'admin') && (isset($_SESSION['userType']) && $_SESSION['userType'] === 'admin')): ?>

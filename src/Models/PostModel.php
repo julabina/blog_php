@@ -78,6 +78,16 @@ class PostModel {
 
     }
 
+    /**
+     * create new post
+     * 
+     * @param string $title
+     * @param string $chapo
+     * @param string $content
+     * @param string $author
+     * 
+     * @return boolean
+     */
     public function createPost(string $title, string $chapo, string $author, string $content): bool  {
 
         $statement = $this->connection->getConnection()->prepare(
@@ -90,7 +100,17 @@ class PostModel {
 
     }
 
-    public function putPost($title, $chapo, $content, $id) {
+    /**
+     * modify one post
+     * 
+     * @param string $title
+     * @param string $chapo
+     * @param string $content
+     * @param string $id
+     * 
+     * @return boolean
+     */
+    public function putPost(string $title, string $chapo, string $content, $id): bool {
 
         $statement = $this->connection->getConnection()->prepare(
             "UPDATE posts SET title = ?, chapo = ?, content = ?, update_date = NOW() WHERE id = ?"
