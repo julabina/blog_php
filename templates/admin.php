@@ -16,6 +16,18 @@
     <form action="/blog_php/adminlogout" method="post">
         <button type="submit">Se deconnecter</button>
     </form>
+
+    <div class="">
+        <a href="/blog_php/adminPanel/addarticle"><div class="">
+            <h2>Ajouter un article</h2>
+        </div></a>
+        <a href="/blog_php/adminPanel/showarticles"><div class="">
+            <h2>Modifier un article</h2>
+        </div></a>
+        <a href=""><div class="">
+            <h2>Commentaire à valider</h2>
+        </div></a>
+    </div>
     
 </main>
     

@@ -11,6 +11,10 @@ $router->get('/adminlog', function(){ require('templates/log.php'); });
 $router->post('/adminlog', 'Admin#log');
 $router->get('/adminPanel', function(){ require('templates/admin.php'); });
 $router->post('/adminlogout', 'Admin#logout');
+$router->get('/adminPanel/addarticle', function(){ require('templates/adminAddArticle.php'); });
+$router->get('/adminPanel/showarticles', 'Admin#list');
+$router->post('/adminPanel/modify/:id', 'Admin#show');
+$router->post('/adminPanel/delete', 'Admin#delete');
 
 /* $router->get('/', function(){ echo "homepage"; });
 $router->get('/post', function(){ echo 'Tous les articles'; });
