@@ -1,4 +1,4 @@
-<? $title = "Mon blog - admin panel - modify comment"; ?>
+<?php $title = "Mon blog - admin panel - modify comment"; ?>
 
 <?php
     session_start();    

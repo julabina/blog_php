@@ -1,4 +1,4 @@
-<? $title = "Mon blog - admin panel - comments list"; ?>
+<?php $title = "Mon blog - admin panel - comments list"; ?>
 
 <?php
     session_start();    

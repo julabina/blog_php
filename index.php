@@ -15,6 +15,7 @@ $router->get('/adminPanel/addarticle', function(){ require('templates/adminAddAr
 $router->get('/adminPanel/showarticles', 'Admin#list');
 $router->post('/adminPanel/modify/:id', 'Admin#show');
 $router->post('/adminPanel/delete', 'Admin#delete');
+$router->post('/adminPanel/addarticle', 'Admin#create');
 
 /* $router->get('/', function(){ echo "homepage"; });
 $router->get('/post', function(){ echo 'Tous les articles'; });

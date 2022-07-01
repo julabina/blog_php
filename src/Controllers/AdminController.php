@@ -77,6 +77,25 @@ class AdminController {
         require('templates/adminModifyArticle.php');
 
     }
+
+    public function create() {
+
+        $title = $_POST['title'];
+        $author = $_POST['author'];
+        $chapo = $_POST['chapo'];
+        $content = $_POST['content'];
+        
+        $postModel = new PostModel();
+        $postModel->connection = new DatabaseConnection();
+
+        $success = $postModel->createPost($title, $chapo, $author, $content);
+
+        if($success) {
+            header('Location: /blog_php/adminPanel/showarticles');
+        } else {
+            echo "pas ok";
+        }
+    }
     
     public function delete() {
 

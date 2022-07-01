@@ -77,5 +77,17 @@ class PostModel {
         return $post;
 
     }
+
+    public function createPost(string $title, string $chapo, string $author, string $content): bool  {
+
+        $statement = $this->connection->getConnection()->prepare(
+            "INSERT INTO posts(title, content, chapo, author, creation_date, update_date) VALUES (?, ?, ?, ?, NOW(), NOW())"
+        );
+
+        $affectedLine = $statement->execute([$title, $content, $chapo, $author]);
+
+        return ($affectedLine > 0);
+
+    }
     
 }
