@@ -14,7 +14,7 @@
 
     <div>
         <a href="/blog_php/articles">articles</a>
-        <a href="#">S'inscrire ou se connecter</a>
+        <a href="/blog_php/log">S'inscrire ou se connecter</a>
     </div>
 
     <form action="" method="post">

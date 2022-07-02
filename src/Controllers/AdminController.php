@@ -3,7 +3,7 @@
 namespace App\Controllers;
 
 use App\Lib\DatabaseConnection;
-use App\Models\AdminModel;
+use App\Models\UserModel;
 use App\Models\PostModel;
 use App\Models\CommentModel;
 
@@ -19,10 +19,10 @@ class AdminController {
             $mail = $_POST['email'];
             $password = "" . $_POST['password'] . "";
 
-            $adminModel = new AdminModel();
-            $adminModel->connection = new DatabaseConnection();
+            $userModel = new UserModel();
+            $userModel->connection = new DatabaseConnection();
     
-            $success = $adminModel->login($mail, $password);
+            $success = $userModel->adminLogin($mail, $password);
     
             if($success) {
                
@@ -41,21 +41,6 @@ class AdminController {
             header('Location: /blog_php');
         }
         
-    }
-    
-    /**
-     * admin logout
-     */
-    public function logout() {
-
-        session_start();
-        
-        $_SESSION = array();
-
-        session_destroy();
-
-        header('Location: /blog_php');
-
     }
 
     /**
