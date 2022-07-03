@@ -46,6 +46,8 @@ class CommentModel {
 
     public function createComment() {
 
+        
+
     }
 
     public function modifyComment() {

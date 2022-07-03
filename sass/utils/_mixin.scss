@@ -1,0 +1,23 @@
+@mixin form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    input {
+        height: 30px;
+        margin-top: 5px;
+    }
+}
+
+@mixin btn {
+    border:none;
+    background: cyan;
+    padding: 5px;
+    font-weight: 500;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: opacity 200ms ease-in-out;
+    &:hover {
+        opacity: 0.6;
+        transition: opacity 200ms ease-in-out;
+    }
+}

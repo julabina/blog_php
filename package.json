@@ -1,0 +1,19 @@
+{
+  "name": "blog_php",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "sass": "sass --watch ./sass/main.scss:./css/style.css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/julabina/blog_php.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/julabina/blog_php/issues"
+  },
+  "homepage": "https://github.com/julabina/blog_php#readme"
+}

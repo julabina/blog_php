@@ -4,44 +4,48 @@
 
 <?php ob_start(); ?>
 
-<main>
-
-    <h1>Mon nom et mon Prenom</h1>
-
-    <img src="assets/moi.webp" alt="une photo de moi">
-
-    <p>une phrase d’accroche qui me ressemble</p>
-
+<header>
     <div>
+        <h1>John Doe</h1>
+        <p>Une phrase d’accroche qui me ressemble</p>
+    </div>
+    
+    <img src="assets/moi.webp" alt="une photo de moi">
+</header>
+<main class="home">
+
+
+    <nav>
         <a href="/blog_php/articles">articles</a>
         <a href="/blog_php/log">S'inscrire ou se connecter</a>
-    </div>
+    </nav>
 
+    <h2>Contactez moi</h2>
     <form action="" method="post">
-        <div>
-            <div>
+        <div class="home__form__nameCont">
+            <div class="home__form__nameCont__name">
                 <label for="">Nom</label>
                 <input type="text" name="lastname" id="">
             </div>
-            <div>
+            <div class="home__form__nameCont__name">
                 <label for="">Prenom</label>
                 <input type="text" name="firstname" id="">
             </div>
         </div>
-        <div>
+        <div class="home__form__mail">
             <label for="">Email</label>
             <input type="email" name="email" id="">
         </div>
-        <div>
+        <div class="home__form__message">
             <label for="">Message</label>
             <textarea name="message" id=""></textarea>
         </div>
-        <button type="submit">Envoyer</button>
+        <button class="home__form__btn" type="submit">Envoyer</button>
     </form>
 
-    <a href="#">Un lien vers mon cv</a>
+    <a class="home__cv" href="#">Téléchargez mon cv</a>
 
-    <div>
+    <div class="home__social">
         <a href="#">Github</a>
         <a href="#">Linkedin</a>
     </div>

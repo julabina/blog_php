@@ -3,15 +3,21 @@
 <?php session_start(); ?>
 
 <? ob_start(); ?>
+
 <main class="blogPost">
     <a href="/blog_php"><h1>Mon blog</h1></a>
     <a href="/blog_php/articles">Retour à la liste des articles</a>
-
+    
     <h1><?= htmlspecialchars($post->title); ?></h1>
     <p><?= htmlspecialchars($post->update_date); ?></p>
     <h2><?= htmlspecialchars($post->chapo); ?></h2>
     
     <p><?= htmlspecialchars($post->content); ?></p>
+
+    <div class="blogPost__separator"></div>
+    
+    <!-- START IF -->
+    <?php if((isset($_SESSION['name']) && $_SESSION['name'] !== "") && (isset($_SESSION['auth']) && $_SESSION['auth'] === "true")): ?>
 
     <form class="blogPost__form" action="" method="post">
         <div class="blogPost__form__name">
@@ -34,6 +40,16 @@
         </div>
         <button type="submit">Envoyer</button>
     </form>
+
+    <?php else: ?>
+
+        <p>Vous devez être connecté pour pouvoir commenter</p>
+        <a href="/blog_php/log">Se connecter</a>
+
+    <?php endif; ?>
+    <!-- END IF -->
+
+    <div class="blogPost__separator"></div>
 
     <?php foreach($comments as $comment): ?>
         <div>
