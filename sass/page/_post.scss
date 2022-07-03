@@ -79,6 +79,13 @@
         width: 340px;
         padding: 10px;
         margin-bottom: 15px;
+        form {
+            width: 100%;
+        }
+        textarea {
+            resize: vertical;
+            width: 100%;
+        }
         &__content {
             line-height: 1.2;
             margin-bottom: 10px;
@@ -86,9 +93,18 @@
         &__date {
             font-size: 0.7em;
             margin-bottom: 5px;
+            width: 100%;
         }
         &__by {
             font-size: 0.9em;
+            width: 100%;
         }
+        button {
+            @include btn;
+        }
+    }
+    &__ann {
+        margin-top: 25px;
+        text-align: center;
     }
 }

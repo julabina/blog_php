@@ -9,21 +9,24 @@ class UserModel {
 
     public DatabaseConnection $connection;
 
-    public function login(string $mail, string $password): bool {
+    public function login(string $mail, string $password): array {
 
         $statement = $this->connection->getConnection()->query(
             "SELECT * FROM users WHERE email = '$mail'"
         );
 
         $user = $statement->fetch();
+        $userInfo = [];
 
         if($user) {
             if(password_verify($password ,$user['pwd'])) {
-                    return true;
+                    $userInfo[] = $user['id'];
+                    $userInfo[] = $user['firstname'];
+                    $userInfo[] = $user['lastname'];
             } 
         }
 
-        return false;
+        return $userInfo;
         
     }
 

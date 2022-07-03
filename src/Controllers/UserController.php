@@ -15,12 +15,14 @@ class UserController {
         $userModel = new UserModel();
         $userModel->connection = new DatabaseConnection();
 
-        $success = $userModel->login($mail, $password);
+        $user = $userModel->login($mail, $password);
 
-        if($success) {
+        if(sizeof($user) > 0) {
             session_start();
             $_SESSION['name'] = $mail;
+            $_SESSION['fullname'] = $user[1] . " " . $user[2];
             $_SESSION['auth'] = "true";
+            $_SESSION['userId'] = $user[0];
         } 
 
         header('Location: /blog_php');

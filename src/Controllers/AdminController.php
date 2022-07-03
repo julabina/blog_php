@@ -133,4 +133,46 @@ class AdminController {
         echo "article $id delete et ses commentaires"; 
     }
 
+    public function showComments() {
+
+        $commentModel = new CommentModel();
+        $commentModel->connection = new DatabaseConnection();
+
+        $comments = $commentModel->getNotEnabledComments();
+
+        require('templates/adminCommentList.php');
+
+    }
+
+    public function deleteComment($id, $commentId) {
+                
+        $commentModel = new CommentModel();
+        $commentModel->connection = new DatabaseConnection();
+        
+        $success = $commentModel->deleteComment($commentId, $content);
+    
+        if($success) {
+            header('Location: /blog_php/adminPanel/showComments');
+        } else {
+            echo "pas ok";
+        } 
+        
+    }
+    
+    public function validate($id) {
+
+        $commentModel = new CommentModel();
+        $commentModel->connection = new DatabaseConnection();
+        
+        $success = $commentModel->validateComment($id);
+    
+        if($success) {
+            header('Location: /blog_php/adminPanel/showComments');
+        } else {
+            echo "pas ok";
+        } 
+
+    }
+
+
 }

@@ -25,7 +25,7 @@
         <a href="/blog_php/adminPanel/showarticles"><div class="">
             <h2>Modifier un article</h2>
         </div></a>
-        <a href=""><div class="">
+        <a href="/blog_php/adminPanel/showComments"><div class="">
             <h2>Commentaire à valider</h2>
         </div></a>
     </div>

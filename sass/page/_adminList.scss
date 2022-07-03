@@ -1,0 +1,30 @@
+.adminCommentList {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    h1 {
+        font-size: 2.4em;
+        margin: 40px 0 30px;
+    }
+    &__comment {
+        width: 340px;
+        border: 1px solid black;
+        padding: 10px;
+        margin: 15px 0;
+        &__content {
+            line-height: 1.2;
+        }
+        &__author {
+            font-size: 0.8em;
+            margin: 20px 0;
+        }
+        &__btnCont {
+            display: flex;
+            width: 100%;
+            justify-content: space-around;
+            button {
+                @include btn;
+            }
+        }
+    }
+}

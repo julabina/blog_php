@@ -331,6 +331,13 @@ footer {
   padding: 10px;
   margin-bottom: 15px;
 }
+.blogPost__comment form {
+  width: 100%;
+}
+.blogPost__comment textarea {
+  resize: vertical;
+  width: 100%;
+}
 .blogPost__comment__content {
   line-height: 1.2;
   margin-bottom: 10px;
@@ -338,9 +345,28 @@ footer {
 .blogPost__comment__date {
   font-size: 0.7em;
   margin-bottom: 5px;
+  width: 100%;
 }
 .blogPost__comment__by {
   font-size: 0.9em;
+  width: 100%;
+}
+.blogPost__comment button {
+  border: none;
+  background: cyan;
+  padding: 5px;
+  font-weight: 500;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: opacity 200ms ease-in-out;
+}
+.blogPost__comment button:hover {
+  opacity: 0.6;
+  transition: opacity 200ms ease-in-out;
+}
+.blogPost__ann {
+  margin-top: 25px;
+  text-align: center;
 }
 
 .blogTitleLog {
@@ -423,6 +449,47 @@ footer {
   transition: opacity 200ms ease-in-out;
 }
 .blogLog__formCont__btn:hover {
+  opacity: 0.6;
+  transition: opacity 200ms ease-in-out;
+}
+
+.adminCommentList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.adminCommentList h1 {
+  font-size: 2.4em;
+  margin: 40px 0 30px;
+}
+.adminCommentList__comment {
+  width: 340px;
+  border: 1px solid black;
+  padding: 10px;
+  margin: 15px 0;
+}
+.adminCommentList__comment__content {
+  line-height: 1.2;
+}
+.adminCommentList__comment__author {
+  font-size: 0.8em;
+  margin: 20px 0;
+}
+.adminCommentList__comment__btnCont {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+}
+.adminCommentList__comment__btnCont button {
+  border: none;
+  background: cyan;
+  padding: 5px;
+  font-weight: 500;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: opacity 200ms ease-in-out;
+}
+.adminCommentList__comment__btnCont button:hover {
   opacity: 0.6;
   transition: opacity 200ms ease-in-out;
 }

@@ -20,26 +20,14 @@
     /* START IF */
     if((isset($_SESSION['name']) && $_SESSION['name'] !== "") && (isset($_SESSION['auth']) && $_SESSION['auth'] === "true")): ?>
 
-    <form class="blogPost__form" action="" method="post">
-        <div class="blogPost__form__nameCont">
-            <div class="blogPost__form__nameCont__name">
-                <label for="">Nom</label>
-                <input type="text" id="" name="lastname">
-            </div>
-            <div class="blogPost__form__nameCont__name">
-                <label for="">Prenom</label>
-                <input type="text" id="" name="firstname">
-            </div>
-        </div>
-        <div class="blogPost__form__mail">
-            <label for="">Adresse email</label>
-            <input type="email" id="" name="email">
-        </div>
+    <?php $actionUrl = "/blog_php/articles/postComment/" . urlencode($post->id) . "-" . urlencode($_SESSION['userId']); ?>
+    <form class="blogPost__form" action="<?= $actionUrl; ?>" method='post'>
         <div class="blogPost__form__message">
             <label for="">Votre commentaire</label>
             <textarea id="" name="content"></textarea>
         </div>
         <button class="blogPost__form__btn" type="submit">Envoyer</button>
+        <p class="blogPost__ann">Tous les commentaires doivent être approuvé par le webmaster</p>
     </form>
 
     <?php else: ?>
@@ -60,9 +48,25 @@
         
         <?php foreach($comments as $comment): ?>
             <div class="blogPost__comment">
-                <p class="blogPost__comment__content"><?= htmlspecialchars($comment->content); ?></p>
-                <p class="blogPost__comment__date">le <?= htmlspecialchars($comment->update_date); ?></p>
-                <p class="blogPost__comment__by">Par <?= htmlspecialchars($comment->author); ?></p>
+                <?php if($_SESSION['userId'] === $comment->userId): ?>
+                    
+                    <form action="/blog_php/articles/<?= urlencode($post->id); ?>/comment/<?= urlencode($comment->id); ?>" method="post">
+                        <textarea class="blogPost__comment__update" name="modifyContent"><?= htmlspecialchars($comment->content); ?></textarea>
+                        <p class="blogPost__comment__date">le <?= htmlspecialchars($comment->update_date); ?></p>
+                        <p class="blogPost__comment__by">Par <?= htmlspecialchars($comment->author); ?></p>
+                                        
+                            <button type="submit">Modifier</button>
+                        </form>
+                        <form action="/blog_php/articles/<?= urlencode($post->id); ?>/commentDelete/<?= urlencode($comment->id); ?>" method="post">
+                            <button type="submit">Supprimer</button>
+                        </form>
+                    <?php else: ?> 
+                        
+                        <p class="blogPost__comment__content"><?= htmlspecialchars($comment->content); ?></p>
+                        <p class="blogPost__comment__date">le <?= htmlspecialchars($comment->update_date); ?></p>
+                        <p class="blogPost__comment__by">Par <?= htmlspecialchars($comment->author); ?></p>
+                    
+                <?php endif; ?>
             </div>   
         <?php endforeach; ?>
 
