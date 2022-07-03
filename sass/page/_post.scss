@@ -1,0 +1,94 @@
+.blogPost {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    h2 {
+        font-size: 1.7em;
+        font-weight: 600;
+    }
+    h3 {
+        font-weight: 500;
+    }
+    &__updateDate {
+        font-size: 0.8em;
+        margin: 15px 0 25px;
+    }
+    &__content {
+        margin: 50px 0 15px;
+        max-width: 340px;
+        line-height: 1.4;
+        letter-spacing: 0.7px;
+    }
+    &__separator {
+        border-bottom: 2px solid rgba(0, 0, 0, 0.747);
+        width: 340px;
+        margin: 20px 0;
+    }
+    form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 340px;
+        padding: 15px 10px; 
+    }
+    &__form {
+        &__nameCont {
+            display: flex;
+            width: 100%;
+            margin-bottom: 15px;
+            justify-content: space-between;
+            &__name {
+                @include form;
+                width: 48%;
+                input {
+                    width: 100%;
+                }
+            }
+        }
+        &__mail {
+            @include form;
+            margin-bottom: 15px;
+        }
+        &__message {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            textarea {
+                margin: 5px 0 20px;
+                resize: vertical;
+                min-height: 100px;
+
+            }
+        }
+        &__btn {
+            @include btn;
+        }
+    }
+    &__logBtn {
+        @include btn;
+        margin: 25px 0 0;
+    }
+    &__noComment {
+        margin: 10px 0 25px;
+    }
+    &__comment {
+        display: flex;
+        flex-direction: column;
+        border: 1px solid rgba(0, 0, 0, 0.404);
+        border-radius: 5px;
+        width: 340px;
+        padding: 10px;
+        margin-bottom: 15px;
+        &__content {
+            line-height: 1.2;
+            margin-bottom: 10px;
+        }
+        &__date {
+            font-size: 0.7em;
+            margin-bottom: 5px;
+        }
+        &__by {
+            font-size: 0.9em;
+        }
+    }
+}

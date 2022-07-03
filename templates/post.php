@@ -2,30 +2,31 @@
 
 <?php session_start(); ?>
 
-<? ob_start(); ?>
+<?php ob_start(); ?>
 
 <main class="blogPost">
-    <a href="/blog_php"><h1>Mon blog</h1></a>
-    <a href="/blog_php/articles">Retour à la liste des articles</a>
+    <a class="blogBack" href="/blog_php/articles">Retour à la liste des articles</a>
+    <a href="/blog_php"><h1 class="blogTitle">Mon blog</h1></a>
     
-    <h1><?= htmlspecialchars($post->title); ?></h1>
-    <p><?= htmlspecialchars($post->update_date); ?></p>
-    <h2><?= htmlspecialchars($post->chapo); ?></h2>
+    <h2><?= htmlspecialchars($post->title); ?></h2>
+    <h3><?= htmlspecialchars($post->chapo); ?></h3>
     
-    <p><?= htmlspecialchars($post->content); ?></p>
+    <p class="blogPost__content"><?= htmlspecialchars($post->content); ?></p>
+    <p class="blogPost__updateDate">Derniere mise à jour le <?= htmlspecialchars($post->update_date); ?></p>
 
     <div class="blogPost__separator"></div>
     
-    <!-- START IF -->
-    <?php if((isset($_SESSION['name']) && $_SESSION['name'] !== "") && (isset($_SESSION['auth']) && $_SESSION['auth'] === "true")): ?>
+    <?php 
+    /* START IF */
+    if((isset($_SESSION['name']) && $_SESSION['name'] !== "") && (isset($_SESSION['auth']) && $_SESSION['auth'] === "true")): ?>
 
     <form class="blogPost__form" action="" method="post">
-        <div class="blogPost__form__name">
-            <div class="blogPost__form__name__lastname">
+        <div class="blogPost__form__nameCont">
+            <div class="blogPost__form__nameCont__name">
                 <label for="">Nom</label>
                 <input type="text" id="" name="lastname">
             </div>
-            <div class="blogPost__form__name__firstname">
+            <div class="blogPost__form__nameCont__name">
                 <label for="">Prenom</label>
                 <input type="text" id="" name="firstname">
             </div>
@@ -36,29 +37,36 @@
         </div>
         <div class="blogPost__form__message">
             <label for="">Votre commentaire</label>
-            <textarea id="" name="content" cols="30" rows="10"></textarea>
+            <textarea id="" name="content"></textarea>
         </div>
-        <button type="submit">Envoyer</button>
+        <button class="blogPost__form__btn" type="submit">Envoyer</button>
     </form>
 
     <?php else: ?>
 
         <p>Vous devez être connecté pour pouvoir commenter</p>
-        <a href="/blog_php/log">Se connecter</a>
+        <a href="/blog_php/log"><button class="blogPost__logBtn">Se connecter</button></a>
 
-    <?php endif; ?>
-    <!-- END IF -->
+    <?php endif; 
+    /* END IF */
+    ?>
 
     <div class="blogPost__separator"></div>
+    <?php if(sizeof($comments) === 0): ?>
 
-    <?php foreach($comments as $comment): ?>
-        <div>
-            <p><?= htmlspecialchars($comment->content); ?></p>
-            <p>le <?= htmlspecialchars($comment->update_date); ?></p>
-            <p>Par <?= htmlspecialchars($comment->author); ?></p>
-        </div>
+        <p class="blogPost__noComment">Pas encore de commentaires</p>
 
-    <?php endforeach; ?>
+    <?php else: ?>
+        
+        <?php foreach($comments as $comment): ?>
+            <div class="blogPost__comment">
+                <p class="blogPost__comment__content"><?= htmlspecialchars($comment->content); ?></p>
+                <p class="blogPost__comment__date">le <?= htmlspecialchars($comment->update_date); ?></p>
+                <p class="blogPost__comment__by">Par <?= htmlspecialchars($comment->author); ?></p>
+            </div>   
+        <?php endforeach; ?>
+
+    <?php endif; ?>    
     
 </main>
 <footer>
