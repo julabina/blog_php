@@ -14,7 +14,10 @@ class AdminController {
      */
     public function log() {   
 
-        if((isset($_POST['email']) && $_POST['email'] !== "" && filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) && (isset($_POST['password']) && $_POST['password'] !== "") && preg_match('/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/', $_POST['password'])) {
+        if(
+            (isset($_POST['email']) && $_POST['email'] !== "" && filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) && 
+            (isset($_POST['password']) && $_POST['password'] !== "") && preg_match('/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/', $_POST['password'])
+        ) {
             
             $mail = $_POST['email'];
             $password = "" . $_POST['password'] . "";
@@ -82,20 +85,33 @@ class AdminController {
      */
     public function create() {
 
-        $title = $_POST['title'];
-        $author = $_POST['author'];
-        $chapo = $_POST['chapo'];
-        $content = $_POST['content'];
-        
-        $postModel = new PostModel();
-        $postModel->connection = new DatabaseConnection();
-
-        $success = $postModel->createPost($title, $chapo, $author, $content);
-
-        if($success) {
-            header('Location: /blog_php/adminPanel/showarticles');
+        if(
+            (isset($_POST['title']) && $_POST['title'] !== "" && preg_match('/^[a-zA-Zé èà]*$/', $_POST['title'])) && 
+            (isset($_POST['author']) && $_POST['author'] !== "" && preg_match('/^[a-zA-Zé èà]*$/', $_POST['author'])) && 
+            (isset($_POST['chapo']) && $_POST['chapo'] !== "" && preg_match('/^[a-zA-Zé èà]*$/', $_POST['chapo'])) && 
+            (isset($_POST['content']) && $_POST['content'] !== "" && preg_match("/^[a-zA-Zé èà0-9\s,.'-]{3,}$/", $_POST['content'])) 
+        ) {
+  
+            $title = $_POST['title'];
+            $author = $_POST['author'];
+            $chapo = $_POST['chapo'];
+            $content = $_POST['content'];
+            
+            $postModel = new PostModel();
+            $postModel->connection = new DatabaseConnection();
+            
+            $success = $postModel->createPost($title, $chapo, $author, $content);
+            
+            if($success) {
+                header('Location: /blog_php/adminPanel/showarticles');
+            } else {
+                echo "pas ok";
+            }
+            
         } else {
-            echo "pas ok";
+            
+            header('Location: /blog_php/adminPanel/showarticles');
+        
         }
     }
 
@@ -106,22 +122,34 @@ class AdminController {
      */
     public function modify($id) {
 
-        $title = $_POST['title'];
-        $content = $_POST['content'];
-        $chapo = $_POST['chapo'];
-        $author = $_POST['author'];
-
-        $postModel = new PostModel();
-        $postModel->connection = new DatabaseConnection();
-
-        $success = $postModel->putPost($title, $chapo, $content, $author, $id);
-
-        if($success) {
-            header('Location: /blog_php/adminPanel/showarticles');
+        if(
+            (isset($_POST['title']) && $_POST['title'] !== "" && preg_match('/^[a-zA-Zé èà]*$/', $_POST['title'])) && 
+            (isset($_POST['author']) && $_POST['author'] !== "" && preg_match('/^[a-zA-Zé èà]*$/', $_POST['author'])) && 
+            (isset($_POST['chapo']) && $_POST['chapo'] !== "" && preg_match('/^[a-zA-Zé èà]*$/', $_POST['chapo'])) && 
+            (isset($_POST['content']) && $_POST['content'] !== "" && preg_match("/^[a-zA-Zé èà0-9\s,.'-]{3,}$/", $_POST['content'])) 
+        ) {
+ 
+            $title = $_POST['title'];
+            $content = $_POST['content'];
+            $chapo = $_POST['chapo'];
+            $author = $_POST['author'];
+            
+            $postModel = new PostModel();
+            $postModel->connection = new DatabaseConnection();
+            
+            $success = $postModel->putPost($title, $chapo, $content, $author, $id);
+            
+            if($success) {
+                header('Location: /blog_php/adminPanel/showarticles');
+            } else {
+                echo "pas ok";
+            }
+            
         } else {
-            echo "pas ok";
-        }
 
+            header('Location: /blog_php/adminPanel/showarticles');
+            
+        }
     } 
     
     /**
@@ -133,6 +161,9 @@ class AdminController {
         echo "article $id delete et ses commentaires"; 
     }
 
+    /**
+     * display not validate comments
+     */
     public function showComments() {
 
         $commentModel = new CommentModel();
@@ -144,6 +175,12 @@ class AdminController {
 
     }
 
+    /**
+     * Delete a comment from admin panel
+     * 
+     * @param $id
+     * @param $commentId
+     */
     public function deleteComment($id, $commentId) {
                 
         $commentModel = new CommentModel();
@@ -159,6 +196,11 @@ class AdminController {
         
     }
     
+    /**
+     * valid a comment
+     * 
+     * @param $id
+     */
     public function validate($id) {
 
         $commentModel = new CommentModel();

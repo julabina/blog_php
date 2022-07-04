@@ -7,7 +7,13 @@ use App\Models\CommentModel;
 
 class CommentController {
 
-    public function createComment($id, $userId) {
+    /**
+     * create new comment
+     * 
+     * @param string $id
+     * @param string $userId
+     */
+    public function createComment(string $id, string $userId) {
 
         $content = $_POST['content'];
 
@@ -24,7 +30,13 @@ class CommentController {
         
     }
     
-    public function update($id, $commentId) {
+    /**
+     * modify one comment
+     * 
+     * @param string $id
+     * @param string $commentId
+     */
+    public function update(string $id, string $commentId) {
         
         $content = $_POST['modifyContent'];
         
@@ -41,7 +53,13 @@ class CommentController {
 
     }
     
-    public function delete($id, $commentId) {
+    /**
+     * delete one comment
+     * 
+     * @param string $id
+     * @param string $commentId
+     */
+    public function delete(string $id, string $commentId) {
                 
         $commentModel = new CommentModel();
         $commentModel->connection = new DatabaseConnection();

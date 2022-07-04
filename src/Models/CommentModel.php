@@ -47,6 +47,15 @@ class CommentModel {
         return $comments;
     }
 
+    /**
+     * create a comment 
+     * 
+     * @param string $id
+     * @param string $userId
+     * @param string $content
+     * 
+     * @return boolean
+     */
     public function createComment(string $id, string $userId, string $content): bool {
 
         $v4 = Uuid::uuid4();
@@ -62,6 +71,14 @@ class CommentModel {
 
     }
 
+    /**
+     * Modify one comment
+     * 
+     * @param string $id
+     * @param string $content
+     * 
+     * @return boolean
+     */
     public function putComment(string $id,string $content): bool {
 
         $statement = $this->connection->getConnection()->prepare(
@@ -74,7 +91,14 @@ class CommentModel {
 
     }
 
-    public function deleteComment($id): bool {
+    /**
+     * delete one comment 
+     * 
+     * @param string $id
+     * 
+     * @return boolean
+     */
+    public function deleteComment(string $id): bool {
 
         $statement = $this->connection->getConnection()->prepare(
             "DELETE FROM comments WHERE commentId = ?"
@@ -86,6 +110,11 @@ class CommentModel {
 
     }
 
+    /**
+     * create a list of not enabled comments
+     * 
+     * @return array
+     */
     public function getNotEnabledComments(): array {
 
         $statement = $this->connection->getConnection()->query(
@@ -108,7 +137,14 @@ class CommentModel {
         
     }
 
-    public function validateComment($id) {
+    /**
+     * valid one comment
+     * 
+     * @param string $id
+     * 
+     * @return boolean
+     */
+    public function validateComment(string $id): bool {
 
         $statement = $this->connection->getConnection()->prepare(
             "UPDATE comments SET is_enabled = 1 WHERE commentId = ?"
