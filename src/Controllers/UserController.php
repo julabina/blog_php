@@ -93,4 +93,25 @@ class UserController {
         
     }
 
+    /**
+     * send mail
+     */
+    public function sendMail() {
+
+        $firstname = $_POST['firstname'];
+        $lastname = $_POST['lastname'];
+        $email = $_POST['email'];
+        $message = $_POST['message'];
+
+        $userModel = new UserModel();
+        $success = $userModel->sendMail($firstname, $lastname, $email, $message);
+
+        if($success) {
+
+        } else {
+
+        }
+
+    }
+
 }

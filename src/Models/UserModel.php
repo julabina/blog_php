@@ -92,4 +92,34 @@ class UserModel {
         
     }
 
+    /**
+     * send email
+     * 
+     * @param string @firstname
+     * @param string @lastname
+     * @param string @email
+     * @param string @message
+     * 
+     * @return boolean
+     */
+    public function sendMail(string $firstname, string $lastname, string $email, string $message) {
+
+        $contact = "monmail@gmail.com";
+        $object = $firstname . " " . $lastname;
+        $entetes="From: " . $email;
+        $entetes.="Content-Type: text/html; charset=iso-8859-1";
+
+        if(mail(
+            $contact,
+            $object,
+            $message
+        )) {
+            echo 'mail send';
+        } else {
+
+            echo 'mail not send';
+        }
+
+    }
+
 }

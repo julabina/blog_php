@@ -14,6 +14,7 @@ $router->get('/log', function() { require('templates/log.php'); });
 $router->post('/log', 'User#log');
 $router->post('/sign', 'User#sign');
 $router->post('/logout', 'User#logout');
+$router->post('/contact', 'User#sendMail');
 $router->get('/adminlog', function(){ require('templates/adminLog.php'); });
 $router->post('/adminlog', 'Admin#log');
 $router->get('/adminPanel', function(){ require('templates/admin.php'); });
@@ -26,12 +27,5 @@ $router->post('/adminPanel/addarticle', 'Admin#create');
 $router->get('/adminPanel/showComments', 'Admin#showComments');
 $router->post('/adminPanel/articles/:id/commentDelete/:commentId', 'Admin#deleteComment')->with('id', '[0-9]+')->with('commentId', '([a-zA-Z\-0-9])+');
 $router->post('/adminPanel/validateComment/:id', 'Admin#validate');
-
-/* $router->get('/', function(){ echo "homepage"; });
-$router->get('/post', function(){ echo 'Tous les articles'; });
-$router->get('/post/:slug-:id', function($slug, $id){ echo 'Afficher l\' article '. $slug . ' ' . $id; })->with('id', '[0-9]+')->with('slug', '([a-zA-Z\-0-9])+');
-$router->get('/article/:id', 'Post#getPost');
-$router->get('/post/:id', function($id) { echo 'Article ' . $id; });
-$router->post('/post/:id', function($id){ echo 'Poster l\' article' . $id; }); */
 
 $router->run();

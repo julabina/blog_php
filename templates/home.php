@@ -21,24 +21,24 @@
     </nav>
 
     <h2>Contactez moi</h2>
-    <form action="" method="post">
+    <form action="/blog_php/contact" method="post">
         <div class="home__form__nameCont">
             <div class="home__form__nameCont__name">
-                <label for="">Nom</label>
-                <input type="text" name="lastname" id="">
+                <label for="contactLastname">Nom</label>
+                <input type="text" name="lastname" id="contactLastname">
             </div>
             <div class="home__form__nameCont__name">
-                <label for="">Prenom</label>
-                <input type="text" name="firstname" id="">
+                <label for="contactFirstname">Prenom</label>
+                <input type="text" name="firstname" id="contactFirstname">
             </div>
         </div>
         <div class="home__form__mail">
-            <label for="">Email</label>
-            <input type="email" name="email" id="">
+            <label for="contactEmail">Email</label>
+            <input type="email" name="email" id="contactEmail">
         </div>
         <div class="home__form__message">
-            <label for="">Message</label>
-            <textarea name="message" id=""></textarea>
+            <label for="contactMessage">Message</label>
+            <textarea name="message" id="contactMessage"></textarea>
         </div>
         <button class="home__form__btn" type="submit">Envoyer</button>
     </form>
